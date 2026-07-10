@@ -6,12 +6,14 @@ Wokwi links for submission:
 EXPLANTION OF CODE:
 
 There is mainly two states in my code which are controlled by the variable "lock" which is the Timeout state , the timeout state will trigger when 3 wrong consecutive codes will be entered and it will last for 15 seconds.
-The HASHTAG key is the BACKSPACE KEY in the keypad (#) , the asterisk is a dummy key in the keypad(*). 
+The HASHTAG key is the BACKSPACE KEY in the keypad (#) , the asterisk is a dummy key in the keypad(*).
 The keys pressed will be inputted as char , so explicity converting the keys to numbers by : int(key) -48 , minus 48 is because numbers have an ASCII value fro 48 , zero has 48 value so 1 will be converted to 49 and so on..
 Then , after conversion , storing the code in variable "codeValue" to compare it with the user codes later.
+
 Backspace key working : 
 When hastag is pressed , the "cursor" variable is decremented by one which stores the no of digits entered and that many asterisk is printed in the LED. Also "codeValue" variable is int so dividing by 10 will just remove the unit's digit number in it.
 Then calling the checkCode function , it compares the codes and if correct code is entered it fetches the current time and calls the "sendpost" function.
+
 "Sendpost" function working :
 the function first checks the wifi connection, if wifi is connected it will send all the stored entries by http post and then the current entrie also . if wifi is disconnected at that time, it will strore the entriy in an OFLINE STRUCT ARRAY.
 Then the code will return to the void loop and continue from there by clearing the lcd screen and setting the variables codevalue etc.. to zero for next iteration.
